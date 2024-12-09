@@ -97,7 +97,7 @@ class TeamMatches extends Component {
       }
     }
 
-    render() {
+    render() 
         const {isLoading} = this.state
         const className = `team-matches-container ${this.getRouteClassName()}`
 
@@ -107,7 +107,7 @@ class TeamMatches extends Component {
           </div>
         )
     }
-  }
+  
 }
 
 export default TeamMatches
