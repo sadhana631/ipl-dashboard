@@ -40,11 +40,11 @@ class TeamMatches extends Component {
     const response = await fetch(`${teamMatchesApiUrl}${id}`)
     const fetchedData = await response.json()
     const formattedData = {
-        teamBannerURL: fetchedData.team_banner_url,
-        latestMatch: this.getFormattedData(fetchedData.latest_match_details),
-        recentMatches: fetchedData.recent_matches.map(eachMatch =>
-          this.getFormattedData(eachMatch),
-        ),
+      teamBannerURL: fetchedData.team_banner_url,
+      latestMatch: this.getFormattedData(fetchedData.latest_match_details),
+      recentMatches: fetchedData.recent_matches.map(eachMatch =>
+        this.getFormattedData(eachMatch),
+      ),
     }
     this.setState({teamMatchesData: formattedData, isLoading: false})
   }
@@ -54,15 +54,15 @@ class TeamMatches extends Component {
     const {recentMatches} = teamMatchesData
 
     return (
-        <ul className="recent-matches-list">
-          {recentMatches.map(recentMatch => (
-            <MatchCard matchDetails={recentMatch} key={recentMatch.id} />
-          ))}
-        </ul>
+      <ul className="recent-matches-list">
+        {recentMatches.map(recentMatch => (
+          <MatchCard matchDetails={recentMatch} key={recentMatch.id} />
+        ))}
+      </ul>
     )
   }
 
-  renderTeamMatches =  () => {
+  renderTeamMatches = () => {
     const {teamMatchesData} = this.state
     const {teamBannerURL, latestMatch} = teamMatchesData
 
@@ -93,21 +93,20 @@ class TeamMatches extends Component {
         case 'DC':
           return 'dc'
         default:
-          return ''              
+          return ''
       }
     }
 
-    render() 
-        const {isLoading} = this.state
-        const className = `team-matches-container ${this.getRouteClassName()}`
+    render()
+    const {isLoading} = this.state
+    const className = `team-matches-container ${this.getRouteClassName()}`
 
-        return (     
-          <div className={className}>
-            {isLoading ? this.renderLoader() : this.renderTeamMatches()}
-          </div>
-        )
-    }
-  
+    return (
+      <div className={className}>
+        {isLoading ? this.renderLoader() : this.renderTeamMatches()}
+      </div>
+    )
+  }
 }
 
 export default TeamMatches

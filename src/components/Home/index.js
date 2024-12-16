@@ -22,8 +22,8 @@ class Home extends Component {
     const fetchedData = await response.json()
     const formattedData = fetchedData.teams.map(team => ({
       name: team.name,
-      id: teamsApiUrl.id,
-      teamImageURL: team.team_image_url,
+      id: team.id,
+      teamImageURL:team.team_image_url,
     }))
 
     this.setState({
