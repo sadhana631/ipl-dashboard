@@ -23,7 +23,7 @@ class Home extends Component {
     const formattedData = fetchedData.teams.map(team => ({
       name: team.name,
       id: team.id,
-      teamImageURL:team.team_image_url,
+      teamImageURL: team.team_image_url,
     }))
 
     this.setState({
