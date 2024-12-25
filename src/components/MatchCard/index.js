@@ -5,7 +5,8 @@ const MatchCard = props => {
   const {competingTeamLogo, competingTeam, matchStatus, result} = matchDetails
   const getMatchStatusClassName = status =>
     status === 'Won' ? 'match-won' : 'match-lost'
-  const getMatchStatusClassName2 = `match-status ${getMatchStatusClassName2(
+  
+  const matchStatusClassName = `match-status ${getMatchStatusClassName(matchStatus)}
     matchStatus,
   )}`
 
