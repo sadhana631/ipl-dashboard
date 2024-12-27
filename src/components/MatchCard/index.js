@@ -6,11 +6,7 @@ const MatchCard = props => {
   const getMatchStatusClassName = status =>
     status === 'Won' ? 'match-won' : 'match-lost'
 
-  const matchStatusClassName = `match-status ${getMatchStatusClassName(
-    matchStatus,
-  )}
-    matchStatus,
-  )}`
+  const matchStatusClassName = `match-status ${getMatchStatusClassName(matchStatus,)}`
 
   return (
     <li className="match-item">
