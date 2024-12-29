@@ -1,12 +1,16 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
+
 import LatestMatch from '../LatestMatch'
 import MatchCard from '../MatchCard'
 
+
 import './index.css'
 
+
 const teamMatchesApiUrl = 'https://apis.ccbp.in/ipl/'
+
 
 class TeamMatches extends Component {
   state = {
@@ -14,9 +18,11 @@ class TeamMatches extends Component {
     teamMatchesData: {},
   }
 
+
   componentDidMount() {
     this.getTeamMatches()
   }
+
 
   getFormattedData = data => ({
     umpires: data.umpires,
@@ -32,10 +38,12 @@ class TeamMatches extends Component {
     matchStatus: data.match_status,
   })
 
+
   getTeamMatches = async () => {
     const {match} = this.props
     const {params} = match
     const {id} = params
+
 
     const response = await fetch(`${teamMatchesApiUrl}${id}`)
     const fetchedData = await response.json()
@@ -49,9 +57,11 @@ class TeamMatches extends Component {
     this.setState({teamMatchesData: formattedData, isLoading: false})
   }
 
+
   renderRecentMatchesList = () => {
     const {teamMatchesData} = this.state
     const {recentMatches} = teamMatchesData
+
 
     return (
       <ul className="recent-matches-list">
@@ -61,6 +71,14 @@ class TeamMatches extends Component {
       </ul>
     )
   }
+
+
+  renderLoader = () => {
+    <div testid="loader">
+     <Loader type="Oval" color="#ffffff" height={50} width={50} />
+    </div>
+  }
+
 
   renderTeamMatches = () => {
     const {isLoading, teamMatchesData} = this.state
@@ -75,10 +93,12 @@ class TeamMatches extends Component {
     )
   }
 
+
   getRouteClassName = () => {
     const {match} = this.props
     const {params} = match
     const {id} = params
+
 
     switch (id) {
       case 'RCB':
@@ -100,9 +120,11 @@ class TeamMatches extends Component {
     }
   }
 
+
   render() {
     const {isLoading} = this.state
     const className = `team-matches-container ${this.getRouteClassName()}`
+
 
     return (
       <div className={className}>
@@ -111,5 +133,6 @@ class TeamMatches extends Component {
     )
   }
 }
+
 
 export default TeamMatches
